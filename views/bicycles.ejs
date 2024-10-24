@@ -38,8 +38,15 @@
           </div>
         
           <div class="bicycle__price">
-            <p class="current_price">$3000.00</p>
-            <p class="old_price">$4000</p>
+            <p class="current_price"><% if(bicycle.hasDiscount) { %> 
+              $<%= (bicycle.originalPrice * (100 - bicycle.discount) / 100) %>
+               <% } else { %>
+                $<%= bicycle.originalPrice %>
+                <% } %>
+              </p>
+            <p class="old_price">
+              <% if(bicycle.hasDiscount) { %> $<%= bicycle.originalPrice %> <% } %>
+            </p>
           </div>
           <% if(bicycle.hasDiscount) { %>
           <div class="discount__rate"><p><%= bicycle.discount %>% Off</p></div>
